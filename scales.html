@@ -1,0 +1,71 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Music Theory Query</title>
+
+        <!-- add metadata later *****
+        <meta name="description" content="The HTML5 Herald">
+        <meta name="author" content="SitePoint"> -->
+
+        <link rel="stylesheet" href="MTQ.CSS">
+
+    </head>
+
+    <body>
+        <!-- header div hosts logo image and navbar -->
+        <div id="header">
+            <div id="logoContainer">
+                <a href="home.html"><img src="logo stuff/logo.PNG" href="home.html" id="logo"></a>
+            </div>
+
+            <div id="navbar">
+                <a class="navlinks" href="home.html">Home</a>
+                <a class="navlinks" href="tunings.html">Tunings</a>
+                <a class="navlinks" href="scales.html">Scales</a>
+                <a class="navlinks" href="intervals.html">Interval Calculator</a>
+                <a class="navlinks" href="chords.html">Chord Builder</a>
+                <a class="navlinks" href="">Account</a>
+            </div>
+        </div>
+
+        <!-- *** page content begins here *** -->
+        <div id="content">
+            <p>Scales are like a pattern of notes that are played in a given key. Put very simply, keys are like groups of notes and chords that can sound good together. If you play 
+            in one key and add notes from outside of that key, those notes will sound out of place. Finding notes in a major key is a simple as following a pattern: whole, 
+            whole, half, whole, whole, whole, half.</p>
+            
+            <p>Whole and half refer to steps (also called tones). Using a piano for example, a half step is moving from one key to the next one 
+            (left or right and including black and white keys) and a whole step is moving two keys. On string instruments with frets, like a guitar, a half step is moving one fret 
+            up or down on the same string, and a whole step is two frets.</p>
+
+            <p>Below you can see this pattern put into practice. You can use the drop down list to see the pattern in different keys, the only difference is the note that you start on. 
+            For example, if you choose the key of C the pattern (W, W, H, W, W, W, H) begins on the note C.</p>
+            
+            <!-- select element to allow the user to choose the key for the scale pattern -->
+            <label for="selectKey">Choose a key:</label>
+            <select name="selectKey" id="selectKey">
+                <option value="0">C</option>
+                <option value="1">D</option>
+                <option value="2">E</option>
+                <option value="3">F</option>
+                <option value="4">G</option>
+                <option value="5">A</option>
+                <option value="6">B</option>
+            </select>
+
+            <br><br>
+
+            Graphics will be inserted here via JavaScript function from the databse, and the button will be used to add a resource to the home page.
+
+            <br><br>
+
+            <!-- this button will initiate javascript function to add resrouce to home page -->
+            <button>Add to Home</button>
+
+        </div>
+    </body>
+
+</html>

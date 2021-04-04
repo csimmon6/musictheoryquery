@@ -3,6 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #d0cece;
 }
 
 select {
@@ -87,6 +88,7 @@ button {
     border-top: 0;
     border-bottom: 0;
     border-color: #a9b8d2;
+    background-color: white;
     overflow: auto;
     padding-left: 1vw;
     padding-right:1vw;

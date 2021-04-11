@@ -11,6 +11,7 @@
         <meta name="author" content="SitePoint"> -->
 
         <link rel="stylesheet" href="MTQ.CSS">
+        <script type="text/javascript" src="MTQ.JS"></script>
 
     </head>
 
@@ -45,16 +46,34 @@
             For example, if you choose the key of C the pattern (W, W, H, W, W, W, H) begins on the note C.</p>
             
             <!-- select element to allow the user to choose the key for the scale pattern -->
-            <label for="selectKey">Choose a key:</label>
-            <select name="selectKey" id="selectKey">
-                <option value="0">C</option>
-                <option value="1">D</option>
-                <option value="2">E</option>
-                <option value="3">F</option>
-                <option value="4">G</option>
-                <option value="5">A</option>
-                <option value="6">B</option>
-            </select>
+            <form action="" method="post">
+                <label for="selectKey">Choose a key:</label>
+                <select name="selectKey" id="selectKey">
+                    <option value="0">C</option>
+                    <option value="1">D</option>
+                    <option value="2">E</option>
+                    <option value="3">F</option>
+                    <option value="4">G</option>
+                    <option value="5">A</option>
+                    <option value="6">B</option>
+                </select>
+                <input type="submit">
+            </form>
+
+            <?php
+                //retrieve image source from database
+                include 'MTQservices.PHP';
+                $sql = "SELECT Source
+                FROM Scales
+                WHERE ResourceID=" . $_POST['selectKey'];
+                $result = $conn->query($sql);
+                $row = mysqli_fetch_array($result);
+
+                // insert image to page
+                echo '<img id="scalesRes" src="';
+                echo $row[0];
+                echo '">'
+            ?>
 
             <br><br>
 

@@ -7,7 +7,7 @@
         <title>Music Theory Query</title>
 
         <!-- add metadata later *****
-        <meta name="description" content="The HTML5 Herald">
+        <meta name="description" content="The html5 Herald">
         <meta name="author" content="SitePoint"> -->
 
         <link rel="stylesheet" href="MTQ.CSS">
@@ -19,15 +19,15 @@
         <!-- header div hosts logo image and navbar -->
         <div id="header">
             <div id="logoContainer">
-                <a href="home.html"><img src="logo stuff/logo.PNG" href="home.html" id="logo"></a>
+                <a href="home.php"><img src="logo stuff/logo.PNG" id="logo"></a>
             </div>
 
             <div id="navbar">
-                <a class="navlinks" href="home.html">Home</a>
-                <a class="navlinks" href="tunings.html">Tunings</a>
-                <a class="navlinks" href="scales.html">Scales</a>
-                <a class="navlinks" href="intervals.html">Interval Calculator</a>
-                <a class="navlinks" href="chords.html">Chord Builder</a>
+                <a class="navlinks" href="home.PHP">Home</a>
+                <a class="navlinks" href="tunings.PHP">Tunings</a>
+                <a class="navlinks" href="scales.PHP">Scales</a>
+                <a class="navlinks" href="intervals.PHP">Interval Calculator</a>
+                <a class="navlinks" href="chords.PHP">Chord Builder</a>
                 <a class="navlinks" href="">Account</a>
             </div>
         </div>

@@ -41,12 +41,30 @@
                 check out some other types of tunings, and tunings for different instruments!
             </p>
 
-            <label for="selectTune">Check out some tunings:</label>
-            <select name="selectTune" id="selectTune">
-                <option>Guitar - Standard</option>
-                <option>Mandolin</option>
-                <option>Banjo</option>
-            </select>
+            <form action="" method="post">
+                <label for="selectTune">Check out some tunings:</label>
+                <select name="selectTune" id="selectTune">
+                    <option value="7">Guitar - Standard</option>
+                    <option value="8">Mandolin</option>
+                    <option value="9">Banjo</option>
+                </select>
+                <input type="submit">
+            </form>
+
+            <?php
+                //retrieve image source from database
+                include 'MTQservices.PHP';
+                $sql = "SELECT Source
+                FROM Tunings
+                WHERE ResourceID=" . $_POST['selectTune'];
+                $result = $conn->query($sql);
+                $row = mysqli_fetch_array($result);
+
+                // insert image to page
+                echo '<img id="scalesRes" src="';
+                echo $row[0];
+                echo '">'
+            ?>
 
             <br>
             <!-- this button will initiate javascript function to add resrouce to home page -->

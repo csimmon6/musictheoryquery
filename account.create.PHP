@@ -30,16 +30,26 @@
 
         <!-- *** page content begins here *** -->
         <div id="content">
-            <p>
-                Welcome to Music Theory Query, the interactive music theory practice resource! You can use the navigation bar above to check out each page on the website. 
-                If you would like to make an account with us, you will be able to save practice resources to this page, and customize it to suit your practice needs! Click 
-                the 'Account' button on the right of the navigation bar to get started or log in.
-            </p>
+            <!-- createAcct dive hosts account creation form -->
+            <div id="createAcct">
+                <form action="account.created.PHP" method="post">
+                    <label for="uname">Enter a username: </label>
+                    <input type="text" name="uname">
+                    <br>
+                    <label for="pword">Enter a password: </label>
+                    <input type="text" name="pword">
+                    <br>
+                    <label for="email"> Enter an email: </label>
+                    <input type="text" name="email">
+                    <input type="submit" value="Create Account">
+                </form>
+                
+                <br><br>
 
-            <?php
-                //session variable will be used to alter page content for logged in users
-                session_start();
-            ?>
+                <!-- this button redirects to login page -->
+                Already have an account?
+                <button><a class="MTQbutton" href="account.login.PHP">Log in</a></button>
+            </div>
         </div>
     </body>
 

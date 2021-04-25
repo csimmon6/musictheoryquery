@@ -29,17 +29,16 @@
         </div>
 
         <!-- *** page content begins here *** -->
+        <!-- placeholder html, this will be echoed by PHP or not depending on the presence of a session variable -->
         <div id="content">
-            <p>
-                Welcome to Music Theory Query, the interactive music theory practice resource! You can use the navigation bar above to check out each page on the website. 
-                If you would like to make an account with us, you will be able to save practice resources to this page, and customize it to suit your practice needs! Click 
-                the 'Account' button on the right of the navigation bar to get started or log in.
-            </p>
+            <p class="centered">
+                This is the account page, here you can create an account, login to your account, and check your account credentials.
 
-            <?php
-                //session variable will be used to alter page content for logged in users
-                session_start();
-            ?>
+                <br><br>
+
+                <button type="button" href="account.create.PHP">Create an account</button>
+                <button type="button" href="account.login.PHP">Login</button>
+            </p>
         </div>
     </body>
 

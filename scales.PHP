@@ -6,10 +6,6 @@
 
         <title>Music Theory Query</title>
 
-        <!-- add metadata later *****
-        <meta name="description" content="The html5 Herald">
-        <meta name="author" content="SitePoint"> -->
-
         <link rel="stylesheet" href="MTQ.CSS">
         <script type="text/javascript" src="MTQ.JS"></script>
 
@@ -28,12 +24,13 @@
                 <a class="navlinks" href="scales.PHP">Scales</a>
                 <a class="navlinks" href="intervals.PHP">Interval Calculator</a>
                 <a class="navlinks" href="chords.PHP">Chord Builder</a>
-                <a class="navlinks" href="">Account</a>
+                <a class="navlinks" href="account.PHP">Account</a>
             </div>
         </div>
 
         <!-- *** page content begins here *** -->
         <div id="content">
+            <!-- page information and theory -->
             <p>Scales are like a pattern of notes that are played in a given key. Put very simply, keys are like groups of notes and chords that can sound good together. If you play 
             in one key and add notes from outside of that key, those notes will sound out of place. Finding notes in a major key is a simple as following a pattern: whole, 
             whole, half, whole, whole, whole, half.</p>
@@ -45,7 +42,7 @@
             <p>Below you can see this pattern put into practice. You can use the drop down list to see the pattern in different keys, the only difference is the note that you start on. 
             For example, if you choose the key of C the pattern (W, W, H, W, W, W, H) begins on the note C.</p>
             
-            <!-- select element to allow the user to choose the key for the scale pattern -->
+            <!-- this form chooses which resource to pull from the db -->
             <form action="" method="post">
                 <label for="selectKey">Choose a key:</label>
                 <select name="selectKey" id="selectKey">
@@ -69,7 +66,7 @@
                 $result = $conn->query($sql);
                 $row = mysqli_fetch_array($result);
 
-                // insert image to page
+                //insert image to page
                 echo '<img id="scalesRes" src="';
                 echo $row[0];
                 echo '">'
@@ -77,7 +74,7 @@
 
             <br><br>
 
-            <!-- this button will initiate javascript function to add resrouce to home page -->
+            <!-- this button will initiate PHP function to add resource to home page -->
             <button>Add to Home</button>
 
         </div>

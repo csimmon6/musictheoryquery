@@ -6,10 +6,6 @@
 
         <title>Music Theory Query</title>
 
-        <!-- add metadata later *****
-        <meta name="description" content="The html5 Herald">
-        <meta name="author" content="SitePoint"> -->
-
         <link rel="stylesheet" href="MTQ.CSS">
         <script type="text/javascript" src="MTQ.JS"></script>
 
@@ -28,12 +24,13 @@
                 <a class="navlinks" href="scales.PHP">Scales</a>
                 <a class="navlinks" href="intervals.PHP">Interval Calculator</a>
                 <a class="navlinks" href="chords.PHP">Chord Builder</a>
-                <a class="navlinks" href="">Account</a>
+                <a class="navlinks" href="account.PHP">Account</a>
             </div>
         </div>
 
         <!-- *** page content begins here *** -->
         <div id="content">
+            <!-- page information and theory -->
             <p>Intervals can be thought of as the space between notes. Each interval has a quality to it that can be heard even if the notes are different. For example, from A to B 
             is a major second interval as is D to E. Despite using different notes the interval is the same.</p>
                 
@@ -120,7 +117,7 @@
 
             </div>
 
-            <!-- this button will initiate javascript function to add resrouce to home page -->
+            <!-- this button will initiate PHP function to add resource to home page -->
             <button>Add to Home</button>
 
         </div>

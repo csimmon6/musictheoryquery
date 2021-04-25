@@ -30,16 +30,7 @@
 
         <!-- *** page content begins here *** -->
         <div id="content">
-            <p>
-                Welcome to Music Theory Query, the interactive music theory practice resource! You can use the navigation bar above to check out each page on the website. 
-                If you would like to make an account with us, you will be able to save practice resources to this page, and customize it to suit your practice needs! Click 
-                the 'Account' button on the right of the navigation bar to get started or log in.
-            </p>
-
-            <?php
-                //session variable will be used to alter page content for logged in users
-                session_start();
-            ?>
+            
         </div>
     </body>
 

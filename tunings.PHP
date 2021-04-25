@@ -6,10 +6,6 @@
 
         <title>Music Theory Query</title>
 
-        <!-- add metadata later *****
-        <meta name="description" content="The html5 Herald">
-        <meta name="author" content="SitePoint"> -->
-
         <link rel="stylesheet" href="MTQ.CSS">
         <script type="text/javascript" src="MTQ.JS"></script>
 
@@ -28,12 +24,13 @@
                 <a class="navlinks" href="scales.PHP">Scales</a>
                 <a class="navlinks" href="intervals.PHP">Interval Calculator</a>
                 <a class="navlinks" href="chords.PHP">Chord Builder</a>
-                <a class="navlinks" href="">Account</a>
+                <a class="navlinks" href="account.PHP">Account</a>
             </div>
         </div>
 
         <!-- *** page content begins here *** -->
         <div id="content">
+            <!-- page information and theory -->
             <p>Knowing how to tune your instrument is an important part of learning that instrument. If you play a stringed instrument (or some percussion instruments), chances are you 
                 will have to tune it someday. Basically, tuning an instrument means ensuring that the instrument makes the sounds that it is supposed to. For stringed instruments this means 
                 tightening or loosening the strings until they produce the appropriate pitch. It's worth saying that there is no "correct" tuning, but most instruments have a standard tuning 
@@ -41,6 +38,7 @@
                 check out some other types of tunings, and tunings for different instruments!
             </p>
 
+            <!-- this form chooses which resource to pull from the db -->
             <form action="" method="post">
                 <label for="selectTune">Check out some tunings:</label>
                 <select name="selectTune" id="selectTune">
@@ -67,7 +65,7 @@
             ?>
 
             <br>
-            <!-- this button will initiate javascript function to add resrouce to home page -->
+            <!-- this button will initiate PHP function to add resource to home page -->
             <button>Add to Home</button>
         </div>
     </body>

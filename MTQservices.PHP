@@ -1,4 +1,5 @@
 <?php
+//connect to MTQ db
 $servername = "localhost";
 $username = "root";
 $password = "1234";

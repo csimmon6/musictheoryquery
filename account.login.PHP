@@ -15,7 +15,7 @@
         <!-- header div hosts logo image and navbar-->
         <div id="header">
             <div id="logoContainer">
-                <a href="home.php"><img src="logo stuff/logo.PNG" id="logo"></a>
+                <a href="home.PHP"><img src="logo stuff/logo.PNG" id="logo"></a>
             </div>
 
             <div id="navbar">
@@ -30,16 +30,25 @@
 
         <!-- *** page content begins here *** -->
         <div id="content">
-            <p>
-                Welcome to Music Theory Query, the interactive music theory practice resource! You can use the navigation bar above to check out each page on the website. 
-                If you would like to make an account with us, you will be able to save practice resources to this page, and customize it to suit your practice needs! Click 
-                the 'Account' button on the right of the navigation bar to get started or log in.
-            </p>
+            <!-- createAcct dive hosts account creation form -->
+            <div id="createAcct">
+                <form action="account.loggedin.PHP" method="post">
+                    <label for="uname">Enter your username: </label>
+                    <input type="text" name="uname">
+                    <br>
+                    <label for="pword">Enter your password: </label>
+                    <input type="text" name="pword">
+                    <br>
+                    <input type="submit" value="Log in">
+                </form>
+                
+                <br><br>
 
-            <?php
-                //session variable will be used to alter page content for logged in users
-                session_start();
-            ?>
+                <!-- this button redirects to login page -->
+                Need an account?
+                <button><a class="MTQbutton" href="account.create.PHP">Create account</a></button>
+
+            </div>
         </div>
     </body>
 

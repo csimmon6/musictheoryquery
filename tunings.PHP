@@ -39,34 +39,43 @@
             </p>
 
             <!-- this form chooses which resource to pull from the db -->
-            <form action="" method="post">
-                <label for="selectTune">Check out some tunings:</label>
-                <select name="selectTune" id="selectTune">
-                    <option value="7">Guitar - Standard</option>
+            <form id="tuneForm" action="" method="post" onchange="autoSub(this.id)">
+                <label for="selectTune">Check out some standard tunings:</label>
+                <select name="selectTune">
+                    <option></option>
+                    <option value="7">Guitar</option>
                     <option value="8">Mandolin</option>
                     <option value="9">Banjo</option>
                 </select>
-                <input type="submit">
             </form>
 
             <?php
                 //retrieve image source from database
                 include 'MTQservices.PHP';
-                $sql = "SELECT Source
+                $sql = "SELECT *
                 FROM Tunings
                 WHERE ResourceID=" . $_POST['selectTune'];
                 $result = $conn->query($sql);
                 $row = mysqli_fetch_array($result);
 
                 // insert image to page
-                echo '<img id="scalesRes" src="';
-                echo $row[0];
-                echo '">'
+                echo '<img src="';
+                echo $row[2];
+                echo '">';
+                echo '<p>' . $row[1] . '</p>';
+
             ?>
 
-            <br>
-            <!-- this button will initiate PHP function to add resource to home page -->
-            <button>Add to Home</button>
+            <form action="tunings.add.PHP" method="post">
+                <label for="addTune">Add tunings to your homepage here! </label>
+                <select name="addTune">
+                    <option value="7">Guitar</option>
+                    <option value="8">Mandolin</option>
+                    <option value="9">Banjo</option>
+                </select>
+                <input type="submit" value="Add to home">
+            </form>
+
         </div>
     </body>
 

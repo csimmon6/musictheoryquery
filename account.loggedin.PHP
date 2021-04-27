@@ -67,7 +67,6 @@
                         $rowGetID = mysqli_fetch_array($resultGetID);
                         $userID = $rowGetID[0];
 
-                        session_start();
                         $_SESSION['loggedIn'] = $userID;
                     }
 

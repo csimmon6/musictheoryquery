@@ -32,13 +32,26 @@
         <!-- placeholder html, this will be echoed by PHP or not depending on the presence of a session variable -->
         <div id="content">
             <p class="centered">
-                This is the account page, here you can create an account, login to your account, and check your account credentials.
+                This is the account page, here you can create an account, log in or out of your account, and check your account credentials.
 
                 <br><br>
 
-                <button type="button" href="account.create.PHP">Create an account</button>
-                <button type="button" href="account.login.PHP">Login</button>
             </p>
+
+            <?php
+                include 'MTQservices.PHP';
+                
+                //check to see if a user has logged in already
+                if (isset($_SESSION['loggedIn'])) {
+                    echo '<p class="centered"><button type="button"><a class="MTQbutton" href="account.loggedout.PHP">Log out</button></a></p>';
+                }
+
+                else {
+                    echo '<p class="centered"><button type="button"><a class="MTQbutton" href="account.create.PHP">Create an account</a></button></p>';
+                    echo '<p class="centered"><button type="button"><a class="MTQbutton" href="account.login.PHP">Login</a></button></p>';
+                }
+            ?>
+
         </div>
     </body>
 

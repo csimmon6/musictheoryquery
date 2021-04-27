@@ -1,4 +1,7 @@
 <?php
+//start session for loggedin variable
+session_start();
+
 //connect to MTQ db
 $servername = "localhost";
 $username = "root";

@@ -4,6 +4,7 @@
     <head>
         <!-- try adding http-equiv refresh to deployed environment -->
         <meta charset="utf-8">
+        <meta http-equiv="refresh" content="0;url=/" />
 
         <title>Music Theory Query</title>
 

@@ -59,13 +59,13 @@ function addResource($conn) {
     $conn->query($sql);
 
     //report success and incoming redirect
-    echo '<p class="centered"> The resource has been added to your homepage! You will be redirected back to the Tunings page shortly!';
+    echo '<p class="centered"> The resource has been added to your homepage! You will be redirected to the home page shortly!';
+    echo '<p class="centered">If you are not redirected, <a href="home.PHP">please click here!</a></p>';
   }
 
   else {
     //remind user that they need an account to use the customizable home page feature
-    echo '<p class="centered">Looks like you have not create an account with us yet! If you would like to fill your home page with resources, <a href="account.PHP">click here to 
-    create an account!</a></p>';
+    echo '<p class="centered">Looks like you have not created an account with us yet! If you would like to fill your home page with resources be sure to create an account with us!';
   }
 };
 
@@ -77,7 +77,8 @@ function remResource($conn) {
   WHERE Source = \"" . $_POST['remRes'] . "\";";
   $conn->query($sql);
 
-  echo 'Resource removed succesffully, you will be returned to the home page shortly!';
+  echo '<p class="centered">Resource removed succesffully, you will be returned to the home page shortly!</p>';
+  echo '<p class="centered">If you are not redirected, <a href="home.PHP">please click here!</a></p>';
 };
 
 //this function determines and then pulls the appropriate interval resource - see intervals.PHP

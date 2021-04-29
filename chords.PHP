@@ -42,7 +42,7 @@
             see some different kinds of chords!</p>
 
             <!-- this form chooses which resource to pull from the db -->
-            <form id="chordsForm" action="" method="post" onchange="autoSub(this.id)">
+            <form action="" method="post" onchange="this.submit()">
                 <label for="selectRes">Pick a chord here:</label>
                 <select name="selectRes">
                     <option></option>
@@ -64,29 +64,12 @@
             <?php
                 include 'MTQservices.PHP';
 
+                //pull resource from db using form data
                 getResource($conn);
+
+                //offer the user the ability to add the resource to their home screen
+                offerResource();
             ?>
-
-            <!-- this form posts the requested resource variable to the addResource.PHP page, the previous form posts to this page
-            so an additional form was needed for the current design -->
-            <form action="addResource.PHP" method="post">
-                <label for="addRes">Add tunings to your homepage here! </label>
-                <select name="addRes" id="addRes">
-                    <option value="10">C</option>
-                    <option value="11">D</option>
-                    <option value="12">E</option>
-                    <option value="13">F</option>
-                    <option value="14">G</option>
-                    <option value="15">A</option>
-                    <option value="16">B</option>
-                </select>
-
-                <!-- hidden select element passes db table variable through post -->
-                <select name="tableVar" style="visibility: hidden;">
-                    <option value="`Chord Shapes`"></option>
-                </select>
-                <input type="submit" value="Add to home">
-            </form>
 
         </div>
     </body>

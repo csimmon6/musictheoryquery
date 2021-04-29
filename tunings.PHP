@@ -7,6 +7,7 @@
         <title>Music Theory Query</title>
 
         <link rel="stylesheet" href="MTQ.CSS">
+
         <script type="text/javascript" src="MTQ.JS"></script>
 
     </head>
@@ -39,9 +40,9 @@
             </p>
 
             <!-- this form chooses which resource to pull from the db -->
-            <form id="tuneForm" action="" method="post" onchange="autoSub(this.id)">
+            <form action="" method="post" onchange="this.submit()">
                 <label for="selectRes">Check out some standard tunings:</label>
-                <select name="selectRes">
+                <select name="selectRes" id="selectRes">
                     <option></option>
                     <option value="7">Guitar</option>
                     <option value="8">Mandolin</option>
@@ -55,29 +56,14 @@
             </form>
 
             <?php
-                //retrieve image source from database
                 include 'MTQservices.PHP';
 
+                //pull resource from db using form data
                 getResource($conn);
 
+                //offer the user the ability to add the resource to their home screen
+                offerResource();
             ?>
-
-            <!-- this form posts the requested resource variable to the addResource.PHP page, the previous form posts to this page
-            so an additional form was needed for the current design -->
-            <form action="addResource.PHP" method="post">
-                <label for="addRes">Add tunings to your homepage here! </label>
-                <select name="addRes" id="addRes">
-                    <option value="7">Guitar</option>
-                    <option value="8">Mandolin</option>
-                    <option value="9">Banjo</option>
-                </select>
-
-                <!-- hidden select element passes db table variable through post -->
-                <select name="tableVar" style="visibility: hidden;">
-                    <option value="Tunings"></option>
-                </select>
-                <input type="submit" value="Add to home">
-            </form>
 
         </div>
     </body>

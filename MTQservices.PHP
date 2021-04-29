@@ -15,6 +15,37 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 };
 
+//this function pulls a resource from the db for display on resource pages - see resource pages (tunings, scales, etc)
+function getResource($conn) {
+    //query db for selected resource
+    $sql = "SELECT Source
+    FROM " . $_POST['selectTable'] . "
+    WHERE ResourceID=" . $_POST['selectRes'];
+    $result = $conn->query($sql);
+    $row = mysqli_fetch_array($result);
+  
+    //insert image to page
+    echo '<img src="' . $row[0] . '">';
+  };
+
+//this function echoes the (mostly hidden) html form which offers the user the option to add a resource to their homepage
+function offerResource() {
+    echo '
+    <form action="addResource.PHP" method="post">
+        <select name="addRes" id="addRes" style="visibility: hidden;">
+            <option value="' . $_POST['selectRes'] . '"></option>
+        </select>
+
+        <!-- hidden select element passes db table variable through post -->
+        <select name="tableVar" style="visibility: hidden;">
+            <option value="' . $_POST['selectTable'] . '"></option>
+        </select>
+        <input type="submit" value="Add to home">
+    </form>
+    ';
+};
+
+
 //this function adds a resource to the user's home page - see resource pages (tunigs, scales, etc)
 function addResource($conn) {
   //check if user is logged in
@@ -47,19 +78,6 @@ function remResource($conn) {
   $conn->query($sql);
 
   echo 'Resource removed succesffully, you will be returned to the home page shortly!';
-};
-
-//this function pulls a resource from the db for display on resource pages - see resource pages (tunings, scales, etc)
-function getResource($conn) {
-  //query db for selected resource
-  $sql = "SELECT Source
-  FROM " . $_POST['selectTable'] . "
-  WHERE ResourceID=" . $_POST['selectRes'];
-  $result = $conn->query($sql);
-  $row = mysqli_fetch_array($result);
-
-  //insert image to page
-  echo '<img src="' . $row[0] . '">';
 };
 
 //this function determines and then pulls the appropriate interval resource - see intervals.PHP

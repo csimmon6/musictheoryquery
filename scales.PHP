@@ -43,9 +43,10 @@
             For example, if you choose the key of C the pattern (W, W, H, W, W, W, H) begins on the note C.</p>
             
             <!-- this form chooses which resource to pull from the db -->
-            <form action="" method="post">
-                <label for="selectKey">Choose a key:</label>
-                <select name="selectKey" id="selectKey">
+            <form id="scalesForm" action="" method="post" onchange="autoSub(this.id)">
+                <label for="selectRes">Choose a key:</label>
+                <select name="selectRes">
+                    <option></option>
                     <option value="0">C</option>
                     <option value="1">D</option>
                     <option value="2">E</option>
@@ -54,29 +55,40 @@
                     <option value="5">A</option>
                     <option value="6">B</option>
                 </select>
-                <input type="submit">
+                
+                <!-- hidden select element to post table name variable -->
+                <select name="selectTable" style="visibility: hidden;">
+                    <option value="Scales"></option>
+                </select>
             </form>
 
             <?php
-                //retrieve image source from database
                 include 'MTQservices.PHP';
-                $sql = "SELECT Source
-                FROM Scales
-                WHERE ResourceID=" . $_POST['selectKey'];
-                $result = $conn->query($sql);
-                $row = mysqli_fetch_array($result);
 
-                //insert image to page
-                echo '<img id="scalesRes" src="';
-                echo $row[0];
-                echo '">'
+                getResource($conn);
             ?>
 
-            <br><br>
+            <!-- this form posts the requested resource variable to the addResource.PHP page, the previous form posts to this page
+            so an additional form was needed for the current design -->
+            <form action="addResource.PHP" method="post">
+                <label for="addRes">Add tunings to your homepage here! </label>
+                <select name="addRes" id="addRes">
+                <option value="0">C</option>
+                    <option value="1">D</option>
+                    <option value="2">E</option>
+                    <option value="3">F</option>
+                    <option value="4">G</option>
+                    <option value="5">A</option>
+                    <option value="6">B</option>
+                </select>
 
-            <!-- this button will initiate PHP function to add resource to home page -->
-            <button>Add to Home</button>
-
+                <!-- hidden select element passes db table variable through post -->
+                <select name="tableVar" style="visibility: hidden;">
+                    <option value="Scales"></option>
+                </select>
+                <input type="submit" value="Add to home">
+            </form>
+            
         </div>
     </body>
 

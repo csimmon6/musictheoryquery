@@ -40,38 +40,41 @@
 
             <!-- this form chooses which resource to pull from the db -->
             <form id="tuneForm" action="" method="post" onchange="autoSub(this.id)">
-                <label for="selectTune">Check out some standard tunings:</label>
-                <select name="selectTune">
+                <label for="selectRes">Check out some standard tunings:</label>
+                <select name="selectRes">
                     <option></option>
                     <option value="7">Guitar</option>
                     <option value="8">Mandolin</option>
                     <option value="9">Banjo</option>
                 </select>
+
+                <!-- hidden select element to post table name variable -->
+                <select name="selectTable" style="visibility: hidden;">
+                    <option value="Tunings"></option>
+                </select>                
             </form>
 
             <?php
                 //retrieve image source from database
                 include 'MTQservices.PHP';
-                $sql = "SELECT *
-                FROM Tunings
-                WHERE ResourceID=" . $_POST['selectTune'];
-                $result = $conn->query($sql);
-                $row = mysqli_fetch_array($result);
 
-                // insert image to page
-                echo '<img src="';
-                echo $row[2];
-                echo '">';
-                echo '<p>' . $row[1] . '</p>';
+                getResource($conn);
 
             ?>
 
-            <form action="tunings.add.PHP" method="post">
-                <label for="addTune">Add tunings to your homepage here! </label>
-                <select name="addTune">
+            <!-- this form posts the requested resource variable to the addResource.PHP page, the previous form posts to this page
+            so an additional form was needed for the current design -->
+            <form action="addResource.PHP" method="post">
+                <label for="addRes">Add tunings to your homepage here! </label>
+                <select name="addRes" id="addRes">
                     <option value="7">Guitar</option>
                     <option value="8">Mandolin</option>
                     <option value="9">Banjo</option>
+                </select>
+
+                <!-- hidden select element passes db table variable through post -->
+                <select name="tableVar" style="visibility: hidden;">
+                    <option value="Tunings"></option>
                 </select>
                 <input type="submit" value="Add to home">
             </form>

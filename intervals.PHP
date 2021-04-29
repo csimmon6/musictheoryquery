@@ -72,6 +72,8 @@
                 <?php
                     include 'MTQservices.PHP';
 
+                    //getInterval($conn);
+                    
                     //before querying db, we must determine the appropriate resouce to retun
 
                     $difference = abs($_POST['intCalcOne'] - $_POST['intCalcTwo']);
@@ -110,9 +112,7 @@
                     $row = mysqli_fetch_array($result);
     
                     // insert image to page
-                    echo '<img id="scalesRes" src="';
-                    echo $row[0];
-                    echo '">'
+                    echo '<img src="' . $row[0] . '">';
                 ?>
 
             </div>

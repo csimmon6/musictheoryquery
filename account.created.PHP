@@ -31,42 +31,9 @@
         <!-- *** page content begins here *** -->
         <div id="content">
             <?php
-                //php takes user input and creates a user account db entry
                 include 'MTQservices.PHP';
 
-                //if statement verifies username availability
-                $sqlVerify = "SELECT Username
-                    FROM `User Accounts` 
-                    WHERE Username = \"" . $_POST['uname'] . "\";";
-
-                $resultVerify = $conn->query($sqlVerify);
-
-                if (mysqli_num_rows($resultVerify) == 0) {
-                    //retrieve and increment by one the max userID
-                    $getID = "SELECT MAX(UserID)
-                    FROM `user accounts`";
-
-                    $IDresult = $conn->query($getID);
-                    $IDrow = mysqli_fetch_array($IDresult);
-                    $userID = $IDrow[0] + 1;
-
-                    //insert account credentials into db
-                    $sql = "INSERT INTO `user accounts`
-                    VALUES
-                        (" . $userID . ", \"" . $_POST['uname'] . "\", \"" . $_POST['pword'] . "\", \"" . $_POST['email'] . "\")";
-
-                    $conn->query($sql);
-
-                    //echo success
-                    echo '<p class="centered">Account created succesfully!!!</p>';
-                    echo '<p class="centered"><a href="account.login.PHP">Now click here to log in!!!</a></p>';
-                }
-
-                else {
-                    echo '<p class="centered">Sorry! That username is already in use.</p>';
-                    echo '<p class="centered"><a href="account.create.PHP">Click here to try again!</a></p>';
-                }
-                
+                createAccount($conn);
             ?>
         </div>
     </body>

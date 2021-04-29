@@ -133,3 +133,9 @@ p {
 .MTQbutton:visited {
     color: white;
 }
+
+.homeRes {
+    display: inline-block;
+    vertical-align: top;
+    float: none;
+}

@@ -34,17 +34,7 @@
             <?php
                 include 'MTQservices.PHP';
 
-                //add selected resource to user resource table in db
-                $sql = "INSERT INTO `User Resources`(UserID, Source)
-                    SELECT " . $_SESSION['loggedIn'] . ", Source
-                    FROM Tunings
-                    WHERE ResourceID = " . $_POST['addTune'] . ";";
-
-                $conn->query($sql);
-
-                //report success and incoming redirect
-                echo '<p class="centered"> The resource has been added to your homepage! You will be redirected back to the Tunings page shortly!';
-                echo $sql;
+                addResource($conn);
             ?>
         </div>
     </body>

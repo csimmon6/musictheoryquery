@@ -30,10 +30,11 @@
 
         <!-- *** page content begins here *** -->
         <div id="content">
+            <!-- php here removes requested resource from home page -->
             <?php
                 include 'MTQservices.PHP';
 
-                logIn($conn);
+                remResource($conn);
             ?>
         </div>
     </body>

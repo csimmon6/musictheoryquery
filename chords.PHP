@@ -42,9 +42,10 @@
             see some different kinds of chords!</p>
 
             <!-- this form chooses which resource to pull from the db -->
-            <form action="" method="post">
-                <label for="selectChord">Pick a chord here:</label>
-                <select name="selectChord" id="selectChord">
+            <form id="chordsForm" action="" method="post" onchange="autoSub(this.id)">
+                <label for="selectRes">Pick a chord here:</label>
+                <select name="selectRes">
+                    <option></option>
                     <option value="10">C</option>
                     <option value="11">D</option>
                     <option value="12">E</option>
@@ -53,27 +54,39 @@
                     <option value="15">A</option>
                     <option value="16">B</option>
                 </select>
-                <input type="submit">
+
+                <!-- hidden select element to post table name variable -->
+                <select name="selectTable" style="visibility: hidden;">
+                    <option value="`Chord Shapes`"></option>
+                </select>
             </form>
 
             <?php
-                //retrieve image source from database
                 include 'MTQservices.PHP';
-                $sql = "SELECT Source
-                FROM `Chord Shapes`
-                WHERE ResourceID=" . $_POST['selectChord'];
-                $result = $conn->query($sql);
-                $row = mysqli_fetch_array($result);
 
-                // insert image to page
-                echo '<img id="scalesRes" src="';
-                echo $row[0];
-                echo '">'
+                getResource($conn);
             ?>
 
-            <br>
-            <!-- this button will initiate PHP function to add resource to home page -->
-            <button>Add to Home</button>
+            <!-- this form posts the requested resource variable to the addResource.PHP page, the previous form posts to this page
+            so an additional form was needed for the current design -->
+            <form action="addResource.PHP" method="post">
+                <label for="addRes">Add tunings to your homepage here! </label>
+                <select name="addRes" id="addRes">
+                    <option value="10">C</option>
+                    <option value="11">D</option>
+                    <option value="12">E</option>
+                    <option value="13">F</option>
+                    <option value="14">G</option>
+                    <option value="15">A</option>
+                    <option value="16">B</option>
+                </select>
+
+                <!-- hidden select element passes db table variable through post -->
+                <select name="tableVar" style="visibility: hidden;">
+                    <option value="`Chord Shapes`"></option>
+                </select>
+                <input type="submit" value="Add to home">
+            </form>
 
         </div>
     </body>

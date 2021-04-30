@@ -18,13 +18,16 @@ if ($conn->connect_error) {
 //this function pulls a resource from the db for display on resource pages - see resource pages (tunings, scales, etc)
 function getResource($conn) {
     //query db for selected resource
-    $sql = "SELECT Source
+    $sql = "SELECT Source, Name
     FROM " . $_POST['selectTable'] . "
     WHERE ResourceID=" . $_POST['selectRes'];
     $result = $conn->query($sql);
     $row = mysqli_fetch_array($result);
   
     //insert image to page
+    echo '<div class="resContent"';
+    echo '<p>' . $row[1] . '</p>';
+    echo '<br>';
     echo '<img src="' . $row[0] . '">';
   };
 
@@ -43,6 +46,7 @@ function offerResource() {
         <input type="submit" value="Add to home">
     </form>
     ';
+    echo '</div>';
 };
 
 
@@ -51,8 +55,8 @@ function addResource($conn) {
   //check if user is logged in
   if (isset($_SESSION['loggedIn'])) {
     //add selected resource to user resource table in db
-    $sql = "INSERT INTO `User Resources`(UserID, Source)
-        SELECT " . $_SESSION['loggedIn'] . ", Source
+    $sql = "INSERT INTO `User Resources`(UserID, Source, Name)
+        SELECT " . $_SESSION['loggedIn'] . ", Source, Name
         FROM " . $_POST['tableVar'] . "
         WHERE ResourceID = " . $_POST['addRes'] . ";";
 
@@ -79,11 +83,6 @@ function remResource($conn) {
 
   echo '<p class="centered">Resource removed succesffully, you will be returned to the home page shortly!</p>';
   echo '<p class="centered">If you are not redirected, <a href="home.PHP">please click here!</a></p>';
-};
-
-//this function determines and then pulls the appropriate interval resource - see intervals.PHP
-function getInterval($conn) {
-
 };
 
 //this function creates a user account with data from the user - see account.created.PHP
@@ -143,7 +142,7 @@ function loadHome($conn) {
 
       else {
           //get array of resource source paths from db
-          $sql = "SELECT Source
+          $sql = "SELECT Source, Name
               FROM `User Resources`
               WHERE UserID = " . $_SESSION['loggedIn'] . ";";
 
@@ -153,6 +152,8 @@ function loadHome($conn) {
               //this echo writes the html to display the resource
               echo '<div class="homeRes">';
               echo '<img src="' . $entry['Source'] . '">';
+              echo '<br>';
+              echo $entry['Name'];
 
               //this echo creates the remove button
               echo '

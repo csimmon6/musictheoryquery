@@ -66,60 +66,32 @@
                         <option value=6>B</option>
                         <option value=7>C</option>
                     </select>
-                    <input type="submit">
+                    <button type="button" onclick="intCalc('intCalcOne', 'intCalcTwo')">Submit</button>
+                </form>
+
+                <!-- this form chooses which resource to pull from the db -->
+                <form id="intCalcResForm" action="" method="post">
+                    <select name="selectRes" id="selectRes" style="visibility: hidden;">
+                        <option id="intSelectRes"></option>
+                    </select>
+
+                    <!-- hidden select element to post table name variable -->
+                    <select name="selectTable" style="visibility: hidden;">
+                        <option value="Intervals"></option>
+                    </select>                
                 </form>
 
                 <?php
                     include 'MTQservices.PHP';
 
-                    //getInterval($conn);
-                    
-                    //before querying db, we must determine the appropriate resouce to retun
+                    //pull resource from db using form data
+                    getResource($conn);
 
-                    $difference = abs($_POST['intCalcOne'] - $_POST['intCalcTwo']);
-                    
-                    //switch case determinse which resource to grab from db
-                    switch ($difference) {
-                        case 0: $resource = 17;
-                        break;
-
-                        case 1: $resource = 18;
-                        break;
-
-                        case 2: $resource = 19;
-                        break;
-
-                        case 3: $resource = 20;
-                        break;
-
-                        case 4: $resource = 21;
-                        break;
-
-                        case 5: $resource = 22;
-                        break;
-
-                        case 6: $resource = 23;
-                        break;
-
-                        case 7: $resource = 24;
-                        break;
-                    }
-
-                    $sql = "SELECT Source
-                    FROM Intervals
-                    WHERE ResourceID=" . $resource;
-                    $result = $conn->query($sql);
-                    $row = mysqli_fetch_array($result);
-    
-                    // insert image to page
-                    echo '<img src="' . $row[0] . '">';
+                    //offer the user the ability to add the resource to their home screen
+                    offerResource();
                 ?>
 
             </div>
-
-            <!-- this button will initiate PHP function to add resource to home page -->
-            <button>Add to Home</button>
-
         </div>
     </body>
 

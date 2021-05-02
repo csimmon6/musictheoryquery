@@ -33,27 +33,32 @@ function getResource($conn) {
 
 //this function echoes the (mostly hidden) html form which offers the user the option to add a resource to their homepage
 function offerResource() {
-    echo '
-    <form action="addResource.PHP" method="post">
-        <select name="addRes" id="addRes" style="visibility: hidden;">
-            <option value="' . $_POST['selectRes'] . '"></option>
-        </select>
+    if (isset($_SESSION['loggedIn'])) {    
+        echo '
+        <form action="addResource.PHP" method="post">
+            <select name="addRes" id="addRes" style="visibility: hidden;">
+                <option value="' . $_POST['selectRes'] . '"></option>
+            </select>
 
-        <!-- hidden select element passes db table variable through post -->
-        <select name="tableVar" style="visibility: hidden;">
-            <option value="' . $_POST['selectTable'] . '"></option>
-        </select>
-        <input type="submit" value="Add to home">
-    </form>
-    ';
-    echo '</div>';
+            <!-- hidden select element passes db table variable through post -->
+            <select name="tableVar" style="visibility: hidden;">
+                <option value="' . $_POST['selectTable'] . '"></option>
+            </select>
+            <input type="submit" value="Add to home">
+        </form>
+        ';
+        echo '</div>';
+    }
+
+    else {
+        echo '<p class="centered">Log in or create an account to add these resources to your custome home page!</p>';
+    }
 };
 
 
 //this function adds a resource to the user's home page - see resource pages (tunigs, scales, etc)
 function addResource($conn) {
-  //check if user is logged in
-  if (isset($_SESSION['loggedIn'])) {
+    //check if user is logged in
     //add selected resource to user resource table in db
     $sql = "INSERT INTO `User Resources`(UserID, Source, Name)
         SELECT " . $_SESSION['loggedIn'] . ", Source, Name
@@ -63,14 +68,8 @@ function addResource($conn) {
     $conn->query($sql);
 
     //report success and incoming redirect
-    echo '<p class="centered"> The resource has been added to your homepage! You will be redirected to the home page shortly!';
+    echo '<p class="centered"> The resource has been added to your homepage successfully! You will be redirected to the home page shortly!';
     echo '<p class="centered">If you are not redirected, <a href="home.PHP">please click here!</a></p>';
-  }
-
-  else {
-    //remind user that they need an account to use the customizable home page feature
-    echo '<p class="centered">Looks like you have not created an account with us yet! If you would like to fill your home page with resources be sure to create an account with us!';
-  }
 };
 
 //this function removes a resource from the user's home page - see home.remove.PHP

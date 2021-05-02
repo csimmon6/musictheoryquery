@@ -23,7 +23,7 @@
                 <a class="navlinks" href="tunings.PHP">Tunings</a>
                 <a class="navlinks" href="scales.PHP">Scales</a>
                 <a class="navlinks" href="intervals.PHP">Interval Calculator</a>
-                <a class="navlinks" href="chords.PHP">Chord Builder</a>
+                <a class="navlinks" href="chords.PHP">Chords</a>
                 <a class="navlinks" href="account.PHP">Account</a>
             </div>
         </div>
@@ -35,7 +35,7 @@
             is a major second interval as is D to E. Despite using different notes the interval is the same.</p>
                 
             <p>Using the major scale (click <a href="scales.PHP">here</a> if you need to brush up on the major scale!) we can find intervals by picking a note and moving 
-            to another not in the same scale. Moving from one note to the next is a major second interval. Starting from the same note but moving two notes makes a major 
+            to another note in the same scale. Moving from one note to the next is a major second interval. Starting from the same note but moving two notes makes a major 
             third interval.</p>
 
             <p>The tool below will tell you what kind of an interval you have when you pick two notes from the key of C. Use this to test your understanding of intervals!</p>

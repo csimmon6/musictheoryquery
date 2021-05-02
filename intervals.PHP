@@ -93,6 +93,12 @@
 
             </div>
         </div>
+
+        <!-- footer begins here -->
+        <div class="footer">
+            Music Theory Query - Connor Simmons - 2021 Maryville University SWDV 691
+        </div>
+
     </body>
 
 </html>

@@ -1,5 +1,5 @@
 html, body {
-    height: 87vh;
+    height: 85.3vh;
     margin: 0;
     padding: 0;
     background-color: #d0cece;
@@ -146,4 +146,9 @@ p {
 .resContent {
     text-align: center;
     font-weight: bold;
+}
+
+.footer {
+    text-align: center;
+    font-size: 1.5vh;
 }
